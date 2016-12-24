@@ -12,3 +12,5 @@ Step 3: Run "webpack -w".
 Step 4: Open a new Terminal (CMD) tab or a new window to run server "node index".
 
 Step 5: Open Chrome to browse it.
+
+Video here:  https://youtu.be/naCtwMnYZOU
