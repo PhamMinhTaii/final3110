@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {addItem, toggle} from 'action';
 
 class NoteForm extends Component{
 
   add(){
     var {dispatch} = this.props;
     var text = this.refs.txt.value
-    dispatch({type: 'ADD_ITEM', newItem: text});
-    dispatch({type: 'TOGGLE'});
+    dispatch(addItem(text));
+    dispatch(toggle());
   }
   render(){
     return (

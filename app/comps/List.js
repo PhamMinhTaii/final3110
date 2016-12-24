@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Note from './Note.js';
+import Note from 'Note';
 import {connect} from 'react-redux';
-import NoteForm from './NoteForm';
+import NoteForm from 'NoteForm';
 
 class List extends Component{
   add(){
@@ -25,5 +25,7 @@ class List extends Component{
 }
 
 module.exports = connect(
-  state => state
+  function(state){
+    return state
+  }
 )(List);

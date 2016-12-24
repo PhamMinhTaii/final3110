@@ -23787,13 +23787,13 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Note = __webpack_require__(217);
+	var _Note = __webpack_require__(219);
 
 	var _Note2 = _interopRequireDefault(_Note);
 
 	var _reactRedux = __webpack_require__(199);
 
-	var _NoteForm = __webpack_require__(218);
+	var _NoteForm = __webpack_require__(217);
 
 	var _NoteForm2 = _interopRequireDefault(_NoteForm);
 
@@ -23865,6 +23865,93 @@
 
 	var _reactRedux = __webpack_require__(199);
 
+	var _action = __webpack_require__(218);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var NoteForm = function (_Component) {
+	  _inherits(NoteForm, _Component);
+
+	  function NoteForm() {
+	    _classCallCheck(this, NoteForm);
+
+	    return _possibleConstructorReturn(this, (NoteForm.__proto__ || Object.getPrototypeOf(NoteForm)).apply(this, arguments));
+	  }
+
+	  _createClass(NoteForm, [{
+	    key: 'add',
+	    value: function add() {
+	      var dispatch = this.props.dispatch;
+
+	      var text = this.refs.txt.value;
+	      dispatch((0, _action.addItem)(text));
+	      dispatch((0, _action.toggle)());
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement('input', { type: 'text', ref: 'txt' }),
+	        _react2.default.createElement(
+	          'button',
+	          { onClick: this.add.bind(this) },
+	          'Them'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return NoteForm;
+	}(_react.Component);
+
+	module.exports = (0, _reactRedux.connect)()(NoteForm);
+
+/***/ },
+/* 218 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	function remove(index) {
+	  return { type: 'REMOVE_ITEM', index: index };
+	}
+
+	function addItem(item) {
+	  return { type: 'ADD_ITEM', newItem: item };
+	}
+
+	function toggle() {
+	  return { type: 'TOGGLE' };
+	}
+
+	module.exports = {
+	  remove: remove, addItem: addItem, toggle: toggle
+	};
+
+/***/ },
+/* 219 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(199);
+
+	var _action = __webpack_require__(218);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -23889,7 +23976,7 @@
 	          dispatch = _props.dispatch,
 	          index = _props.index;
 
-	      dispatch({ type: 'REMOVE_ITEM', index: index });
+	      dispatch((0, _action.remove)(index));
 	    }
 	  }, {
 	    key: 'render',
@@ -23915,67 +24002,6 @@
 	}(_react.Component);
 
 	module.exports = (0, _reactRedux.connect)()(Note);
-
-/***/ },
-/* 218 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(199);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var NoteForm = function (_Component) {
-	  _inherits(NoteForm, _Component);
-
-	  function NoteForm() {
-	    _classCallCheck(this, NoteForm);
-
-	    return _possibleConstructorReturn(this, (NoteForm.__proto__ || Object.getPrototypeOf(NoteForm)).apply(this, arguments));
-	  }
-
-	  _createClass(NoteForm, [{
-	    key: 'add',
-	    value: function add() {
-	      var dispatch = this.props.dispatch;
-
-	      var text = this.refs.txt.value;
-	      dispatch({ type: 'ADD_ITEM', newItem: text });
-	      dispatch({ type: 'TOGGLE' });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement('input', { type: 'text', ref: 'txt' }),
-	        _react2.default.createElement(
-	          'button',
-	          { onClick: this.add.bind(this) },
-	          'Them'
-	        )
-	      );
-	    }
-	  }]);
-
-	  return NoteForm;
-	}(_react.Component);
-
-	module.exports = (0, _reactRedux.connect)()(NoteForm);
 
 /***/ }
 /******/ ]);
